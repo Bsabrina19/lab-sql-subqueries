@@ -75,6 +75,11 @@ JOIN payment p ON c.customer_id = p.customer_id
 GROUP BY c.customer_id, c.first_name, c.last_name
 ORDER BY total_spent DESC
 LIMIT 1;
+SELECT DISTINCT f.title
+FROM film f
+JOIN inventory i ON f.film_id = i.film_id
+JOIN rental r ON i.inventory_id = r.inventory_id
+WHERE r.customer_id = 526;
 
 # 8 we retrieve the client_id and the total_amount_spent of those clients who spent more than the average of the total_amount spent by each client
 SELECT customer_id, SUM(amount) AS total_amount_spent
